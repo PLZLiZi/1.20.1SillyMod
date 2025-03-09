@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "plz.lizi.sillyyouare.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.sillymod.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "MixinMinecraft"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

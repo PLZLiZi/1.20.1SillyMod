@@ -19,9 +19,9 @@ static int imgW = 853;
 
 static int imgH = 480;
 
-static BYTE back[12] = {};
+static BYTE back[12] = 0/*protect*/;
 
-static BYTE hook[12] = { 0x48, 0xB8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0xFF, 0xE0 };
+static BYTE hook[12] = 0/*protect*/;
 
 template <typename T>T copy_v(const T& var) {
 	T* new_var = new T;
@@ -321,23 +321,15 @@ static auto EmptyFunc() {
 
 static void Hook(void* scr, void* dst)
 {
-	DWORD old;
-	VirtualProtect(scr, 12, PAGE_EXECUTE_READWRITE, &old);
-	memcpy(back, scr, 12);
-	*(PINT64)(hook + 2) = (INT64)dst;
-	memcpy(scr, hook, 12);
-	VirtualProtect(scr, 12, old, &old);
+	/*PROTECT*/
 }
 
 static void UnHook(void* scr)
 {
-	DWORD old;
-	VirtualProtect(scr, 12, PAGE_EXECUTE_READWRITE, &old);
-	memcpy(scr, back, 12);
-	VirtualProtect(scr, 12, old, &old);
+	/*PROTECT*/
 }
 
 static void Inject(char* dllp, DWORD processid)
 {
-
+	/*PROTECT*/
 }
